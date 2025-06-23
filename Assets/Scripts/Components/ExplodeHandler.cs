@@ -6,20 +6,20 @@ namespace Components
     [RequireComponent(typeof(Exploder))]
     [RequireComponent(typeof(Instantiator))]
     [RequireComponent(typeof(Destroyer))]
-    [RequireComponent(typeof(ChanceDivider))]
+    [RequireComponent(typeof(Splitter))]
     public class ExplodeHandler : MonoBehaviour
     {
         private Exploder _exploder;
         private Instantiator _instantiator;
         private Destroyer _destroyer;
-        private ChanceDivider _chanceDivider;
+        private Splitter _splitter;
 
         private void Awake()
         {
             _exploder = GetComponent<Exploder>();
             _instantiator = GetComponent<Instantiator>();
             _destroyer = GetComponent<Destroyer>();
-            _chanceDivider = GetComponent<ChanceDivider>();
+            _splitter = GetComponent<Splitter>();
         }
 
         private void OnEnable()
@@ -34,9 +34,9 @@ namespace Components
 
         private void OnExplode()
         {
-            if (_chanceDivider.IsDivide())
+            if (_splitter.CanSplit())
             {
-                List<GameObject> instantiatedObjects = _instantiator.InstantiateObjects();
+                List<GameObject> instantiatedObjects = _instantiator.InstantiateСlones();
 
                 foreach (GameObject instantiatedObject in instantiatedObjects)
                 {
@@ -46,7 +46,7 @@ namespace Components
                 }
             }
             
-            _destroyer.DestroyGameObject(gameObject);
+            _destroyer.DestroyObject(gameObject);
         }
 
         private void Reduce(GameObject instantiatedObject)
@@ -71,11 +71,11 @@ namespace Components
 
         private void SetNewDivideChance(GameObject instantiatedObject)
         {
-            bool hasChanceDivider = instantiatedObject.TryGetComponent(out ChanceDivider chanceDivider);
+            bool hasChanceDivider = instantiatedObject.TryGetComponent(out Splitter chanceDivider);
 
             if (hasChanceDivider)
             {
-                chanceDivider.SetNewDivideChance(_chanceDivider.CurrentDivideChance);
+                chanceDivider.SetReducedSplitProbability(_splitter.CurrentSplitProbability);
             }
         }
     }

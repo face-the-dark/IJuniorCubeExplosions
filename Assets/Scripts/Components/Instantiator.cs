@@ -6,22 +6,22 @@ namespace Components
 {
     public class Instantiator : MonoBehaviour
     {
-        [SerializeField] private int _minSpawnCubesNumber = 2;
-        [SerializeField] private int _maxSpawnCubesNumber = 6;
+        [SerializeField] private int _minSpawnClonesNumber = 2;
+        [SerializeField] private int _maxSpawnClonesNumber = 6;
 
-        public List<GameObject> InstantiateObjects()
+        public List<GameObject> InstantiateСlones()
         {
-            List<GameObject> gameObjects = new List<GameObject>();
+            List<GameObject> clones = new List<GameObject>();
 
-            int cubesNumber = RandomUtils.GetRandomNumber(_minSpawnCubesNumber, _maxSpawnCubesNumber);
+            int cubesNumber = RandomUtils.GetRandomNumber(_minSpawnClonesNumber, _maxSpawnClonesNumber);
 
             for (int i = 0; i < cubesNumber; i++)
             {
-                GameObject instantiate = Instantiate(gameObject, transform.position, Quaternion.identity);
-                gameObjects.Add(instantiate);
+                GameObject clone = Instantiate(gameObject, transform.position, Quaternion.identity);
+                clones.Add(clone);
             }
             
-            return gameObjects;
+            return clones;
         }
     }
 }

@@ -4,7 +4,7 @@ namespace Components
 {
     public class Destroyer : MonoBehaviour
     {
-        public void DestroyGameObject(GameObject objectToDestroy)
+        public void DestroyObject(GameObject objectToDestroy)
         {
             Destroy(objectToDestroy);
         }
