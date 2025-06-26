@@ -608,8 +608,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minSpawnClonesNumber: 2
   _maxSpawnClonesNumber: 6
-  _cubePrefab: {fileID: 1408671273500767124}
-  _spawnPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1193664785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,8 +632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 378d42abfc184ec40a32a0824f173e87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionForce: 1
-  _explosionRadius: 1
+  _explosionForce: 700
+  _explosionRadius: 20
 --- !u!1 &1214160334
 GameObject:
   m_ObjectHideFlags: 0
