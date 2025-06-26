@@ -33,8 +33,12 @@ public class ExplodeHandler : MonoBehaviour
         {
             List<Cube> spawnCubes = _spawner.SpawnClones(cube);
             _cubeBuilder.BuildCubes(cube, spawnCubes);
-
+            
             _exploder.Explode(cube);
+        }
+        else
+        {
+            _exploder.ExplodeAround(cube);
         }
 
         _spawner.DestroyCube(cube);
